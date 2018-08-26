@@ -16,6 +16,7 @@ class EnigmaTest < Minitest::Test
   def test_it_square_todays_date
     e = Enigma.new
     actual = e.date_squared
+    # expected must be changed to reflect current date
     expected = 407265697680625
     assert_equal expected, actual
   end
@@ -23,6 +24,7 @@ class EnigmaTest < Minitest::Test
   def test_it_creates_the_offset
     e = Enigma.new
     actual = e.offset
+    # expected must be changed to reflect current date
     expected = [0, 6, 2, 5]
     assert_equal expected, actual
   end
