@@ -36,5 +36,11 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Array, e.key_code
   end
 
-
+  # def test_it_can_generate_key_a
+  #   e = Enigma
+  #   e.encrypt("test", "12345", Date.new(1993, 4, 10))
+  #
+  #   assert_equal 12, e.key_a
+  #   assert_instance_of Integer, e.key_a
+  # end
 end

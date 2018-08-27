@@ -42,6 +42,10 @@ class Enigma
     offset_array
   end
 
+  def quads(message)
+    message.downcase.chars.each_slice(4).to_a
+  end
+
   def random_key_number
     key_code = []
     randomized_number = rand(00000..99999).to_s.rjust(5, '0').chars
