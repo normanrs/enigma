@@ -41,7 +41,7 @@ class EnigmaTest < Minitest::Test
     e = Enigma.new
 
     assert_equal 4, e.random_key_number.length
-    assert_instance_of Array, e.key_code
+    assert_instance_of Array, e.key
   end
 
   # def test_it_can_generate_key_a
