@@ -1,4 +1,6 @@
+require 'pry'
 class Enigma
+
   attr_reader :characters, :key_code, :date
 
   def initialize
@@ -41,6 +43,24 @@ class Enigma
     end
     offset_array
   end
+
+  def rotations
+    [     (offset[0] + key[0]),
+          (offset[1] + key[1]),
+          (offset[2] + key[2]),
+          (offset[3] + key[3])
+    ]
+  end
+
+  def rotate(quad, rotation)
+    snip = quad.chars
+    quad_rotated = []
+    snip.each do |character|
+      position = @characters.index("#{character}")
+      rotated = @characters.rotate(rotation)
+      quad_rotated << rotated[position]
+    end
+    quad_rotated
 
   def quads(message)
     message.downcase.chars.each_slice(4).to_a
