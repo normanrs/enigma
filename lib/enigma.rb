@@ -15,9 +15,39 @@ class Enigma
   end
 
   def encrypt(message, key = random_key_number, date = Date.today)
-    @key = key
+    @key = key.chars
     @date = date
 
+    rotations
+    require "pry"; binding.pry
+    # message_arrays = slice_four(message)
+    # translated_array = translate_array(message_arrays)
+
+
+  end
+
+  def random_key_number
+    randomized_number = rand(00000..99999).to_s.rjust(5, '0')
+  end
+
+  def key_a
+    a = @key[0] + @key[1]
+    a.to_i
+  end
+
+  def key_b
+    b = @key[1] + @key[2]
+    b.to_i
+  end
+
+  def key_c
+    c = @key[2] + @key[3]
+    c.to_i
+  end
+
+  def key_d
+    d = @key[3] + @key[4]
+    d.to_i
   end
 
   def date_squared
@@ -39,10 +69,10 @@ class Enigma
   end
 
   def rotations
-    [     (offset[0] + key[0]),
-          (offset[1] + key[1]),
-          (offset[2] + key[2]),
-          (offset[3] + key[3])
+    [     (offset_array[0] + key_a),
+          (offset_array[1] + key_b),
+          (offset_array[2] + key_c),
+          (offset_array[3] + key_d)
     ]
   end
 
@@ -57,31 +87,7 @@ class Enigma
     quad_rotated
   end
 
-  def quads(message)
+  def slice_four(message)
     message.downcase.chars.each_slice(4).to_a
-  end
-
-  def random_key_number
-    randomized_number = rand(00000..99999).to_s.rjust(5, '0')
-  end
-
-  def key_a
-    a = @key[0].to_s + @key[1].to_s
-    a.to_i
-  end
-
-  def key_b
-    b = @key[0].to_s + @key[1].to_s
-    b.to_i
-  end
-
-  def key_c
-    c = @key[0].to_s + @key[1].to_s
-    c.to_i
-  end
-
-  def key_d
-    d = @key[0].to_s + @key[1].to_s
-    d.to_i
   end
 end

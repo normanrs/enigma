@@ -65,4 +65,11 @@ class EnigmaTest < Minitest::Test
   #   assert_equal 12, e.key_a
   #   assert_instance_of Integer, e.key_a
   # end
+
+  def test_it_calculates_rotations
+    e = Enigma.new
+    e.encrypt("test", "12345", Date.new(2018,8,1))
+
+
+  end
 end
