@@ -12,6 +12,12 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, e
   end
 
+  def test_it_can_accept_a_key
+    e = Enigma.new
+
+    assert_equal
+  end
+
   def test_it_square_todays_date
     skip
     e = Enigma.new
@@ -37,11 +43,10 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_it_can_generate_random_key_array
+  def test_it_can_generate_a_random_five_number_key_string
     e = Enigma.new
 
-    assert_equal 4, e.random_key_number.length
-    assert_instance_of Array, e.key
+    assert_equal 5, e.random_key_number.length
   end
 
   # def test_it_can_generate_key_a
