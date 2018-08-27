@@ -68,13 +68,7 @@ class Enigma
   end
 
   def random_key_number
-    key = []
-    randomized_number = rand(00000..99999).to_s.rjust(5, '0').chars
-
-    4.times do |index|
-      key << (randomized_number[index] + randomized_number[index + 1]).to_i
-    end
-    key
+    randomized_number = rand(00000..99999).to_s.rjust(5, '0')
   end
 
   def key_a
