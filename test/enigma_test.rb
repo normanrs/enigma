@@ -19,11 +19,20 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_square_todays_date
-    skip
     e = Enigma.new
+    e.encrypt("test")
     actual = e.date_squared
     # expected must be changed to reflect current date
-    expected = 407265697680625
+    expected = 407265778403929
+    assert_equal expected, actual
+  end
+
+  def test_it_square_a_given_date
+    e = Enigma.new
+    e.encrypt("test", 12345, Date.new(2018,8,1))
+    actual = e.date_squared
+    # expected must be changed to reflect current date
+    expected = 407264729001601
     assert_equal expected, actual
   end
 
