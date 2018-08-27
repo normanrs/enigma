@@ -12,24 +12,18 @@ class Enigma
                     "5", "6", "7", "8", "9", "0",
                     " ", ".", "," ]
     @key = []
-    @date = date
   end
 
   def encrypt(message, key = random_key_number, date = Date.today)
-    @key = key.chars
-# This will need to accept three arguments: a message, a key, and a date
-# Key and date will need default values in case no argument is given
-# Key default will be to generate a random key
-# Date default will be Date.today
+    @key = key
+    @date = date
 
   end
 
   def date_squared
-    day = Date.today.day.to_s.rjust(2, "0")
-    # day will have to be changed to the instance variable
-    # we create above, defaulting at Date.today
-    month = Date.today.month.to_s.rjust(2, "0")
-    date_int = (Date.today.year.to_s + month + day).to_i
+    day = @date.day.to_s.rjust(2, "0")
+    month = @date.month.to_s.rjust(2, "0")
+    date_int = (@date.year.to_s + month + day).to_i
     date_int ** 2
   end
 
