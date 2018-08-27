@@ -29,5 +29,12 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_it_can_generate_random_key_array
+    e = Enigma.new
+
+    assert_equal 4, e.random_key_number.length
+    assert_instance_of Array, e.key_code
+  end
+
 
 end
