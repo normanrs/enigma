@@ -15,13 +15,22 @@ class Enigma
   end
 
   def encrypt(message, key = random_key_number, date = Date.today)
+    @message = message
     @key = key.chars
     @date = date
 
+    sliced_messages = message.downcase.chars.each_slice(4).to_a
+    # sliced_messages.each do |sliced_message|
     # message_arrays = slice_four(message)
     # translated_array = translate_array(message_arrays)
+  end
 
-
+  def split_up
+    rotated_array = []
+    sliced_messages.each do |array|
+      rotated_array << rotate(array)
+    end
+    rotated_array
   end
 
   def random_key_number
@@ -66,18 +75,18 @@ class Enigma
     offset_array
   end
 
-  def rotations
-    [     (offset_array[0] + key_a),
-          (offset_array[1] + key_b),
-          (offset_array[2] + key_c),
-          (offset_array[3] + key_d)
-    ]
+  def create_turns
+    rotations = [(offset[0] + key_a),
+              (offset[1] + key_b),
+              (offset[2] + key_c),
+              (offset[3] + key_d)]
+    encrypted = []
   end
 
-  def rotate(quad, rotation)
-    snip = quad.chars
+  def rotate(turn)
+    # snip = slice_four.chars
     quad_rotated = []
-    snip.each do |character|
+    split_up.each do |character|
       position = @characters.index("#{character}")
       rotated = @characters.rotate(rotation)
       quad_rotated << rotated[position]
@@ -85,7 +94,4 @@ class Enigma
     quad_rotated
   end
 
-  def slice_four(message)
-    message.downcase.chars.each_slice(4).to_a
-  end
 end

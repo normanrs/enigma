@@ -40,6 +40,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_rotates
+    skip
     e = Enigma.new
     actual = e.rotate("ab", 5)
     expected = ["f", "g"]
@@ -62,8 +63,8 @@ class EnigmaTest < Minitest::Test
 
   def test_it_calculates_rotations
     e = Enigma.new
-    e.encrypt("test", "12345", Date.new(2018,8,1))
-
-
+    actual = e.encrypt("test", "12345", Date.new(2018,8,1))
+    expected = "what"
+    assert_equal expected, actual
   end
 end
