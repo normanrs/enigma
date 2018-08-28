@@ -12,12 +12,6 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, e
   end
 
-  def test_it_can_accept_a_key
-    e = Enigma.new
-
-    assert_equal
-  end
-
   def test_it_square_todays_date
     e = Enigma.new
     e.encrypt("test")
@@ -29,7 +23,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_square_a_given_date
     e = Enigma.new
-    e.encrypt("test", 12345, Date.new(2018,8,1))
+    e.encrypt("test", "12345", Date.new(2018,8,1))
     actual = e.date_squared
     # expected must be changed to reflect current date
     expected = 407264729001601

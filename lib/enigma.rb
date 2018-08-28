@@ -18,8 +18,6 @@ class Enigma
     @key = key.chars
     @date = date
 
-    rotations
-    require "pry"; binding.pry
     # message_arrays = slice_four(message)
     # translated_array = translate_array(message_arrays)
 
