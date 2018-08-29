@@ -35,12 +35,12 @@ class KeyTest < Minitest::Test
     key = Key.new("12345")
 
 
-    assert_equal [12, 23, 34, 45], key.key_nums_array
+    assert_equal [12, 23, 34, 45], key.nums
   end
 
   def test_it_can_create_key_offset_array_without_key_given
     key = Key.new
 
-    assert_equal 4, key.key_nums_array.length
+    assert_equal 4, key.nums.length
   end
 end
