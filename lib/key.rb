@@ -29,7 +29,7 @@ class Key
     d.to_i
   end
 
-  def key_nums_array
+  def nums
     [key_a, key_b, key_c, key_d]
   end
 end

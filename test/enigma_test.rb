@@ -12,38 +12,40 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, e
   end
 
-  def test_it_creates_new_key
+  def test_it_has_arguments
     e = Enigma.new
-
-    assert_instance_of Key, e.create_key
-  end
-
-
-  def test_it_square_todays_date
-    skip
-    e = Enigma.new
-    e.encrypt("a dumb message", "12345", Date.new(2018,8,1))
-    actual = e.date_squared
-    # expected must be changed to reflect current date
-    expected = 407264729001601
+    actual = e.characters[0]
+    expected = "a"
     assert_equal expected, actual
   end
 
-  def test_it_square_a_given_date
-    skip
+  def test_it_creates_turns
     e = Enigma.new
     e.encrypt("a dumb message", "12345", Date.new(2018,8,1))
-    actual = e.date_squared
-    # expected must be changed to reflect current date
-    expected = 407264729001601
+    actual = e.turns
+    expected = [13, 29, 34, 46]
     assert_equal expected, actual
   end
 
-  def test_it_calculates_rotations
-    skip
+  def test_it_rotates
+    e = Enigma.new
+    e.encrypt("a dumb message", "12345", Date.new(2018,8,1))
+    actual = e.rotate(["a", " ", "d", "u"])
+    expected = ["n", "1", ".", "2"]
+    assert_equal expected, actual
+  end
+
+  def test_it_encrypts
     e = Enigma.new
     actual = e.encrypt("a dumb message", "12345", Date.new(2018,8,1))
     expected = "n1.2z56zriiht8"
+    assert_equal expected, actual
+  end
+
+  def test_it_encrypts_without_key_or_date
+    e = Enigma.new
+    actual = e.encrypt("a dumb message").length
+    expected = 14
     assert_equal expected, actual
   end
 end
