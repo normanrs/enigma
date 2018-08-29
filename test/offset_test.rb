@@ -35,7 +35,7 @@ class OffsetTest < Minitest::Test
   def test_it_makes_offset_array
     offset = Offset.new(Date.new(2018,8,1))
     actual = offset.nums
-    expected = [1,6, 0, 1]
+    expected = [1, 6, 0, 1]
     assert_equal expected, actual
   end
 end
