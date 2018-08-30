@@ -1,7 +1,6 @@
 require 'simplecov'
 SimpleCov.start
 
-require 'pry'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/enigma.rb'
@@ -43,9 +42,25 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_encrypts_without_key_or_date
+    skip
     e = Enigma.new
     actual = e.encrypt("a dumb message").length
     expected = 14
     assert_equal expected, actual
   end
+
+  def test_it_decrypts
+    e = Enigma.new
+    actual = e.decrypt("n1.2z56zriiht8", "12345", Date.new(2018,8,1))
+    expected = "a dumb message"
+    assert_equal expected, actual
+  end
+
+  def test_it_decrypts_without_date
+    e = Enigma.new
+    actual = e.decrypt("twc26106xeehz4", "12345")
+    expected = "a dumb message"
+    assert_equal expected, actual
+  end
+
 end
