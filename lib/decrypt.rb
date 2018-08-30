@@ -8,9 +8,11 @@ incoming_text = reader_file.read
 reader_file.close
 
 e = Enigma.new
-k = ARGV[2]
+k = "12345"
+d = Date.new(2018,8,1)
+o = Offset.new(d)
 
-decrypted_text = e.decrypt(incoming_text.strip, k)
+decrypted_text = e.decrypt(incoming_text.strip, k, d)
 
 writer_file = File.open(ARGV[1], "w")
 writer_file.write(decrypted_text)

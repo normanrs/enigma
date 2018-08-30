@@ -9,10 +9,10 @@ reader_file.close
 
 e = Enigma.new
 k = "12345"
-d = Date.today
+d = Date.new(2018,8,1)
 o = Offset.new(d)
 
-encrypted_text = e.encrypt(incoming_text.downcase.strip, k)
+encrypted_text = e.encrypt(incoming_text.downcase.strip, k, d)
 writer_file = File.open(ARGV[1], "w")
 writer_file.write(encrypted_text)
 writer_file.close
