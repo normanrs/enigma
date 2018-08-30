@@ -18,4 +18,4 @@ writer_file = File.open(ARGV[1], "w")
 writer_file.write(decrypted_text)
 writer_file.close
 
-p "Created #{ARGV[1]} with key #{k} and date #{ARGV[3]}"
+p "Created #{ARGV[1]} with key #{k} and date #{o.date}"
