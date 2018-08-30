@@ -2,7 +2,6 @@ require_relative 'key.rb'
 require_relative 'offset.rb'
 
 class Enigma
-
   attr_reader :characters
 
   def initialize
@@ -19,9 +18,22 @@ class Enigma
     @message = message
     @key_in = key_in
     @date_in = date_in
+    @neg = 1
 
     sliced_message = message.downcase.chars.each_slice(4).to_a
     sliced_message.map do |four_character_array|
+      rotate(four_character_array)
+    end.join
+  end
+
+  def decrypt(code, key_in, date_in = nil)
+    @mcode = code
+    @key_in = key_in
+    @date_in = date_in
+    @neg = -1
+
+    sliced_code = code.downcase.chars.each_slice(4).to_a
+    sliced_code.map do |four_character_array|
       rotate(four_character_array)
     end.join
   end
@@ -38,10 +50,11 @@ class Enigma
     else
       offset = Offset.new(@date_in)
     end
-             [(offset.nums[0] + key.nums[0]),
-              (offset.nums[1] + key.nums[1]),
-              (offset.nums[2] + key.nums[2]),
-              (offset.nums[3] + key.nums[3])]
+
+    [(offset.nums[0] + key.nums[0]) * @neg,
+    (offset.nums[1] + key.nums[1]) * @neg,
+    (offset.nums[2] + key.nums[2]) * @neg,
+    (offset.nums[3] + key.nums[3]) * @neg]
   end
 
   def rotate(array)
